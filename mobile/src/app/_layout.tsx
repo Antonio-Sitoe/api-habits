@@ -1,4 +1,5 @@
 import React from "react";
+import "../lib/dayjs";
 import { SplashScreen, Slot } from "expo-router";
 
 import {

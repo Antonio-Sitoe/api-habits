@@ -1,34 +1,38 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { DAY_SIZE, HabitDay } from "../components/HabitDay";
+import Header from "../components/Header";
+import { generateRangeDatesFromYearStart } from "../utils/generate-range-between-dates";
+import { ScrollView } from "react-native-gesture-handler";
+
+const datesFromYearStart = generateRangeDatesFromYearStart();
 
 export default function Page() {
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Ola miuda</Text>
-        <Text style={styles.subtitle}>High Level</Text>
+    <View className="flex-1 bg-background text-white px-8 pt-16">
+      <Header />
+      <View className="flex-row mt-6 mb-2">
+        {["D", "S", "T", "Q", "Q", "S", "S"].map((item, i) => {
+          return (
+            <Text
+              className="text-zinc-400 text-xl font-bold text-center mx-1"
+              key={`${item}-${i}`}
+              style={{ width: DAY_SIZE }}
+            >
+              {item}
+            </Text>
+          );
+        })}
       </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
+        <View className="flex-row flex-wrap">
+          {datesFromYearStart.map((date) => {
+            return <HabitDay key={`${String(date)}`} />;
+          })}
+        </View>
+      </ScrollView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-});
