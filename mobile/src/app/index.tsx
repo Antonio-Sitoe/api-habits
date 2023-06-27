@@ -3,10 +3,13 @@ import { DAY_SIZE, HabitDay } from "../components/HabitDay";
 import Header from "../components/Header";
 import { generateRangeDatesFromYearStart } from "../utils/generate-range-between-dates";
 import { ScrollView } from "react-native-gesture-handler";
-
-const datesFromYearStart = generateRangeDatesFromYearStart();
+import { useMemo } from "react";
 
 export default function Page() {
+  const datesFromYearStart = useMemo(
+    () => generateRangeDatesFromYearStart(),
+    []
+  );
   return (
     <View className="flex-1 bg-background text-white px-8 pt-16">
       <Header />

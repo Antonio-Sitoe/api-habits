@@ -9,6 +9,7 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold,
 } from "@expo-google-fonts/inter";
+import { StatusBar } from "react-native";
 
 export default function RootLayout() {
   const [fontsLoading] = useFonts({
@@ -20,5 +21,10 @@ export default function RootLayout() {
   if (!fontsLoading) {
     return <SplashScreen />;
   }
-  return <Slot />;
+  return (
+    <>
+      <StatusBar barStyle="light-content" />
+      <Slot />
+    </>
+  );
 }
