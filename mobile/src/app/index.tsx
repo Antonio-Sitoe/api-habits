@@ -10,6 +10,7 @@ export default function Page() {
     () => generateRangeDatesFromYearStart(),
     []
   );
+
   return (
     <View className="flex-1 bg-background text-white px-8 pt-16">
       <Header />
@@ -32,7 +33,15 @@ export default function Page() {
       >
         <View className="flex-row flex-wrap">
           {datesFromYearStart.map((date) => {
-            return <HabitDay key={`${String(date)}`} />;
+            return (
+              <HabitDay
+                href={{
+                  pathname: "/habit",
+                  params: { date: date.toISOString() },
+                }}
+                key={`${String(date)}`}
+              />
+            );
           })}
         </View>
       </ScrollView>
