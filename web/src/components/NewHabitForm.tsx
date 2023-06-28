@@ -1,6 +1,15 @@
 import { Check } from "phosphor-react";
 import * as CheckBox from "@radix-ui/react-checkbox";
 
+const availableWeekDays = [
+  "Domingo",
+  "Segunda-Feira",
+  "Terca-Feira",
+  "Quarta-Feira",
+  "Quinta-Feira",
+  "Sexta-Feira",
+];
+
 function NewHabitForm() {
   return (
     <form className="w-full flex flex-col mt-6">
