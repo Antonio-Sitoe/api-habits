@@ -1,10 +1,11 @@
-import { Alert, Text, View } from "react-native";
+import { Alert, Button, Text, View } from "react-native";
 import { DAY_SIZE, HabitDay } from "../components/HabitDay";
 import Header from "../components/Header";
 import { generateRangeDatesFromYearStart } from "../utils/generate-range-between-dates";
 import { ScrollView } from "react-native-gesture-handler";
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../lib/axios";
+import axios from "axios";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
@@ -16,17 +17,18 @@ export default function Page() {
   );
 
   async function fecthData() {
-    try {
-      setLoading(true);
-      const { data } = await api.get("/summary");
-      console.log(data);
-      setData(data);
-    } catch (error) {
-      Alert.alert("Erro", "Nao foi possivel");
-      console.log(JSON.stringify(error));
-    } finally {
-      setLoading(false);
-    }
+    // try {
+    //   setLoading(true);
+    const { data } = await api.get("/cars");
+
+    console.log(data);
+    setData(data);
+    // } catch (error) {
+    //   Alert.alert("Erro", "Nao foi possivel");
+    //   console.log(JSON.stringify(error?.message));
+    // } finally {
+    //   setLoading(false);
+    // }
   }
   useEffect(() => {
     fecthData();
@@ -52,6 +54,7 @@ export default function Page() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
       >
+        <Button title="Send" onPress={fecthData} />
         <View className="flex-row flex-wrap">
           {datesFromYearStart.map((date) => {
             return (
