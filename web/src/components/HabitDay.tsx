@@ -10,9 +10,10 @@ interface HabitDayProps {
   date: Date;
 }
 
-export function HabitDay({ amount = 0, completed = 0 }: HabitDayProps) {
+export function HabitDay({ amount = 0, completed = 0, date }: HabitDayProps) {
   const completePercentage =
     amount > 0 ? Math.round((completed / amount) * 100) : 0;
+
   return (
     <PoppOver.Root>
       <PoppOver.Trigger
