@@ -1,15 +1,36 @@
-import { Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { DAY_SIZE, HabitDay } from "../components/HabitDay";
 import Header from "../components/Header";
 import { generateRangeDatesFromYearStart } from "../utils/generate-range-between-dates";
 import { ScrollView } from "react-native-gesture-handler";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { api } from "../lib/axios";
 
 export default function Page() {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+
   const datesFromYearStart = useMemo(
     () => generateRangeDatesFromYearStart(),
     []
   );
+
+  async function fecthData() {
+    try {
+      setLoading(true);
+      const { data } = await api.get("/summary");
+      console.log(data);
+      setData(data);
+    } catch (error) {
+      Alert.alert("Erro", "Nao foi possivel");
+      console.log(JSON.stringify(error));
+    } finally {
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    fecthData();
+  }, []);
 
   return (
     <View className="flex-1 bg-background text-white px-8 pt-16">

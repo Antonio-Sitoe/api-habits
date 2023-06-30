@@ -18,7 +18,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#09090A"
+      },
+      "package": "com.antoniositoe533.mobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7ab00fd2-b96c-4cbf-8b83-1d31c7d6c49b"
       }
-    }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7ab00fd2-b96c-4cbf-8b83-1d31c7d6c49b"
+    },
+    "ios": {}
   }
 }

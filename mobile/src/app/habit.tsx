@@ -5,7 +5,7 @@ import { BackButton } from "../components/BackButton";
 import dayjs from "dayjs";
 import { ProgressBar } from "../components/ProgressBar";
 import { CheckBox } from "../components/CheckBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 interface DayInfoProps {
